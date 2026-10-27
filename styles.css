@@ -1,0 +1,259 @@
+:root{
+  --bg: #23242a;         
+  --header: #1c1d21;
+  --panel: #1c1d21;      /* slightly lighter panel */
+  --card: #8e3338;       /* card background */
+  --accent: #4fb3ff;     /* bright cyan-blue accent */
+  --muted: #9bb1c9;      /* muted text */
+  --text: #e6f3ff;       /* primary text */
+  --dropdown:#2b2c31;
+  --tabselected: rgba(142, 51, 56, 1);
+  --tabunselected: rgba(142, 51, 56, 0.6);
+  --glass: rgba(255,255,255,0.03);
+  --radius: 10px;
+  --gap: 18px;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,var(--bg), var(--bg) 140%);
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-position: center; /* Centers the image */
+  /* height: 400px; */
+  color:var(--text);
+  display:flex;
+  min-height:100vh;
+  padding-top: 88px;    /* prevents content from hiding under header */
+}
+
+.logo{
+  width: 50px;
+  height:50px;
+}
+
+.logo-wrapper {
+    display: block; /* Makes the anchor act like a block-level div */
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer; /* Changes the cursor to a hand icon */
+}
+
+/* Sidebar */
+.sidebar{
+  width:285px;
+  padding:22px;
+  background:linear-gradient(180deg,var(--panel), var(--panel));
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:fixed;
+  height:100vh;
+}
+.brand h1{
+  margin:0;
+  font-size:28px;
+  color:var(--accent);
+  letter-spacing:1px;
+}
+.brand small{color:var(--muted)}
+.sidebar nav ul{
+  list-style:none;
+  padding:0;
+  margin:10px 0 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.sidebar nav a{
+  color:var(--text);
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:8px;
+  display:block;
+  transition:background .12s,color .12s,transform .08s;
+}
+.sidebar nav a:hover{background:var(--glass); transform:translateX(4px)}
+.sidebar-footer{margin-top:auto;color:var(--muted);font-size:12px}
+
+/* Header */
+.site-header{
+    position: fixed;      /* makes it stay in place */
+    top: 0;               /* stick to the top */
+    left: 0;
+    width: 100%;          /* full width */
+    background: var(--header);  /* match your guide’s style */
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 9999;        /* stays above all content */
+    display: flex;
+}
+
+.header-content{
+  color: var(--text);
+}
+
+/* Main */
+.main{
+  flex:1;
+  padding:68px; /* When adding here, add on padding-left 5 lines down too.*/
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding-left:345px;
+}
+
+.main-header{
+  text-align: center;
+  margin:80px 0 100px 0;
+}
+.main-header h2{
+  margin:15px 0 6px 0;
+}
+.muted{color:var(--muted)}
+
+/* Tabs */
+.tabs{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  margin: 5px 0;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+.tab{
+  width: 200px;
+  background-color: var(--tabunselected);
+  color: var(--muted);
+  border:0px solid rgba(255,255,255,0.03);
+  padding:20px 40px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:all .25s;
+  font-weight:500;
+  font-size: 18px;
+}
+
+.tab:hover {
+  background-color: var(--tabselected);
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.tab[aria-selected="true"]{
+  background:var(--tabselected);
+  color:var(--text);
+  box-shadow:0 6px 18px rgba(11,33,56,0.2);
+  border:0px solid rgba(79,179,255,0.18);
+  cursor: default;
+  font-weight: 560;
+  text-decoration:none;
+}
+
+/* Panels */
+.tab-panels{
+  margin-top:8px;
+  display:grid;
+  gap:16px;
+  /* justify-content:; */
+}
+.panel{
+  background-color: rgba(139, 45, 49, 0.5);
+  /* background:linear-gradient(180deg, rgba(142, 51, 56, 0.8), rgba(139, 45, 49, 0.5) 101%); */
+  padding:16px;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.02);
+  background-repeat: no-repeat;
+  width:90%;
+  /* justify-content: none; */
+}
+
+/* Placeholder image */
+.placeholder{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+}
+.placeholder img{
+  width:140px;
+  height:80px;
+  object-fit:cover;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Responsive */
+@media (max-width:880px){
+  .sidebar{display:none}
+  body{padding:12px}
+  .main{padding:12px}
+}
+
+/* Dropdown menus on header*/
+/* Container */
+
+/* .menu{
+  
+} */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: none;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.arrow {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: var(--dropdown);
+  min-width: 150px;
+  border-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+
+/* Hover behavior */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content a {
+  padding: 10px 16px;
+  display: block;
+  text-decoration: none;
+  color: #e9e3ef;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
